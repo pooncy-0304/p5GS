@@ -1,349 +1,653 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+
+<html lang="zh-Hant-HK">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Description" content="Contribute to pooncy-0304/GS6.1 development by creating an account on GitHub.">
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti TC'; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 12.0px 'Songti TC'; font-kerning: none}
-    span.s3 {font: 12.0px 'Apple Color Emoji'; font-kerning: none}
-    span.s4 {font: 12.0px Times; font-kerning: none}
-  </style>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>宇宙探險家：地球奧秘大挑戰！</title>
+
+    <style>
+
+        /* CSS 樣式：設計可愛、色調溫暖的介面 */
+
+        body {
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei", "微軟正黑體";
+
+            background-color: #e6f7ff;
+
+            color: #333;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            min-height: 100vh;
+
+            margin: 0;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        #game-container {
+
+            background-color: #ffffff;
+
+            width: 90%;
+
+            max-width: 800px;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+            text-align: center;
+
+            position: relative;
+
+        }
+
+
+
+        h1 {
+
+            color: #4a90e2;
+
+            font-size: 2.5em;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        .screen { display: none; }
+
+        .active { display: block; }
+
+
+
+        input[type="text"] {
+
+            font-size: 1.2em;
+
+            padding: 15px;
+
+            border: 2px solid #ddd;
+
+            border-radius: 10px;
+
+            width: 70%;
+
+            max-width: 300px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        button {
+
+            font-size: 1.2em;
+
+            padding: 15px 30px;
+
+            background-color: #f5a623;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s ease;
+
+        }
+
+
+
+        button:hover { background-color: #e0961a; }
+
+
+
+        #quiz-image {
+
+            max-width: 100%;
+
+            height: auto;
+
+            max-height: 250px;
+
+            border-radius: 15px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        #question-text {
+
+            font-size: 1.5em;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        #options-container {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+
+
+        .option-btn {
+
+            background-color: #ffffff;
+
+            color: #333;
+
+            border: 2px solid #ddd;
+
+            font-size: 1.1em;
+
+            padding: 15px;
+
+            text-align: left;
+
+        }
+
+
+
+        .option-btn:hover {
+
+            background-color: #f0f8ff;
+
+            border-color: #4a90e2;
+
+        }
+
+
+
+        #hud {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+
+            font-size: 1.1em;
+
+            color: #666;
+
+        }
+
+
+
+        #leaderboard {
+
+            width: 80%;
+
+            margin: 20px auto;
+
+            border-collapse: collapse;
+
+        }
+
+
+
+        #leaderboard th, #leaderboard td {
+
+            border: 1px solid #ddd;
+
+            padding: 12px;
+
+            text-align: center;
+
+        }
+
+
+
+        #leaderboard th {
+
+            background-color: #f2f2f2;
+
+            color: #4a90e2;
+
+        }
+
+    </style>
+
 </head>
+
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="zh-Hant-HK"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;</span><span class="s2">宇宙探險家：地球奧秘大挑戰！</span><span class="s1">&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* CSS </span><span class="s2">樣式：設計可愛、色調溫暖的介面</span><span class="s1"> */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei", "</span><span class="s2">微軟正黑體</span><span class="s1">";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #e6f7ff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #333;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>min-height: 100vh;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#game-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 90%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 800px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 40px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #4a90e2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 2.5em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.screen { display: none; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.active { display: block; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>input[type="text"] {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.2em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 2px solid #ddd;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 70%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 300px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.2em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 15px 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f5a623;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button:hover { background-color: #e0961a; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#quiz-image {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-height: 250px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#question-text {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#options-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.option-btn {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #333;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 2px solid #ddd;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: left;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.option-btn:hover {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f0f8ff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-color: #4a90e2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#hud {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #666;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#leaderboard {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 80%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 20px auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-collapse: collapse;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#leaderboard th, #leaderboard td {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#leaderboard th {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f2f2f2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #4a90e2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="game-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="start-screen" class="screen active"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1&gt;</span><span class="s2">各位小小宇宙探險家</span><span class="s1">&lt;br&gt;</span><span class="s2">歡迎來到「地球奧秘大挑戰」！</span><span class="s3">🚀</span><span class="s1">&lt;/h1&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span>&lt;p&gt;</span><span class="s1">喺出發去太空之前，請先登記你嘅探險家身分！</span><span class="s4">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;input type="text" id="student-name-input" placeholder="</span><span class="s2">請輸入你的真實姓名</span><span class="s1">..." maxlength="10"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onclick="startGame()"&gt;</span><span class="s2">開始探險</span><span class="s1"> </span><span class="s3">🌍</span><span class="s1">&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="quiz-screen" class="screen"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="hud"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span><span class="s2">探險家：</span><span class="s1">&lt;span id="player-name-display"&gt;&lt;/span&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span><span class="s2">時間：</span><span class="s1">&lt;span id="timer-display"&gt;0&lt;/span&gt;s&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span><span class="s2">分數：</span><span class="s1">&lt;span id="score-display"&gt;0&lt;/span&gt; / 5&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img id="quiz-image" src="" alt="</span><span class="s2">地球卡通圖</span><span class="s1">"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p id="question-text"&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="options-container"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="results-screen" class="screen"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 id="final-status"&gt;</span><span class="s2">探險完成！</span><span class="s3">🏆</span><span class="s1">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span><span class="s2">你的最終分數是：</span><span class="s1">&lt;span id="final-score"&gt;&lt;/span&gt; / 5&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span><span class="s2">你用了</span><span class="s1"> &lt;span id="final-time"&gt;&lt;/span&gt; </span><span class="s2">秒完成！</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;hr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3&gt;</span><span class="s3">🏆</span><span class="s1"> </span><span class="s2">全班榮譽排行榜</span><span class="s1"> (Top 3) </span><span class="s3">🏆</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;table id="leaderboard"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;thead&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;</span><span class="s2">排名</span><span class="s1">&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;</span><span class="s2">探險家</span><span class="s1">&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;</span><span class="s2">分數</span><span class="s1">&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;</span><span class="s2">時間</span><span class="s1">&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/thead&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;tbody id="leaderboard-body"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/table&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onclick="resetGame()"&gt;</span><span class="s2">再挑戰一次</span><span class="s1">&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s3">🚨</span><span class="s1"> </span><span class="s2">超級重要：請將下面引號內嘅網址，替換成你嘅</span><span class="s1"> Google Apps Script Web App URL</span><span class="s2">！</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE";</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const questionsData = [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "1. </span><span class="s2">點解地球上會有白天同黑夜嘅交替呢？</span><span class="s3">☀️🌙</span><span class="s1">",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>image: "https://i.ibb.co/3sXw6L8/earth-rotation.png",</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span>options: ["</span><span class="s1">因為地球圍繞太陽公轉</span><span class="s4">", "</span><span class="s1">因為地球每天繞着貫穿南北兩極嘅假想地軸自轉</span><span class="s4">", "</span><span class="s1">因為太陽每</span><span class="s4"> 24 </span><span class="s1">小時會熄滅一次</span><span class="s4">", "</span><span class="s1">因為月亮擋住咗太陽光</span><span class="s4">"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>answer: 1</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "2. </span><span class="s2">為何地球上不同地區，白天和黑夜出現的時間並不相同？</span><span class="s3">⏰</span><span class="s1">",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>image: "https://i.ibb.co/f49b16B/earth-timezones.png",</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span>options: ["</span><span class="s1">因為各國的時鐘設計不同</span><span class="s4">", "</span><span class="s1">因為不同地區的人喜歡不同的起床時間</span><span class="s4">", "</span><span class="s1">因為地球轉得太快，時鐘壞了</span><span class="s4">", "</span><span class="s1">因為不同地區在不同時間受到太陽光照射</span><span class="s4">"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>answer: 3</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "3. </span><span class="s2">地球圍繞太陽「公轉」一周，大約需要幾耐時間？</span><span class="s3">🚀</span><span class="s1">",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>image: "https://i.ibb.co/fD27bM8/earth-orbit.png",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: ["</span><span class="s2">三百六十五日</span><span class="s1"> (</span><span class="s2">即是一年</span><span class="s1">)", "</span><span class="s2">二十四小時</span><span class="s1">", "</span><span class="s2">一個月</span><span class="s1">", "</span><span class="s2">一百年</span><span class="s1">"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>answer: 0</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span>question: "4. </span><span class="s1">地軸是傾斜的，當太陽光「直射」北半球時，光線集中，請問北半球係咩季節？</span><span class="s3">🔥</span><span class="s4">",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>image: "https://i.ibb.co/7X7k908/north-summer.png",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: ["</span><span class="s2">冬季</span><span class="s1">", "</span><span class="s2">春季</span><span class="s1">", "</span><span class="s2">夏季</span><span class="s1">", "</span><span class="s2">秋季</span><span class="s1">"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>answer: 2</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "5. </span><span class="s2">當太陽光斜射北半球，並同時直射南半球時，南半球是什麼季節？</span><span class="s3">⛄</span><span class="s1">",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>image: "https://i.ibb.co/TqqS6F8/south-summer.png",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: ["</span><span class="s2">春季</span><span class="s1">", "</span><span class="s2">夏季</span><span class="s1">", "</span><span class="s2">秋季</span><span class="s1">", "</span><span class="s2">冬季</span><span class="s1">"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>answer: 1</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let currentQuestion = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let score = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let playerName = "";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let startTime, timerInterval;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const startScreen = document.getElementById('start-screen');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const quizScreen = document.getElementById('quiz-screen');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const resultsScreen = document.getElementById('results-screen');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const leaderboardBody = document.getElementById('leaderboard-body');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function startGame() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>playerName = document.getElementById('student-name-input').value.trim();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (playerName === "") {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>alert("</span><span class="s2">探險家，請先輸入你嘅姓名啊！</span><span class="s1">");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('player-name-display').textContent = playerName;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>startScreen.classList.remove('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>quizScreen.classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>startTimer();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>loadQuestion();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function loadQuestion() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (currentQuestion &gt;= questionsData.length) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>endQuiz();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const data = questionsData[currentQuestion];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('quiz-image').src = data.image;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('question-text').textContent = data.question;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const optionsContainer = document.getElementById('options-container');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>optionsContainer.innerHTML = "";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>data.options.forEach((option, index) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>button.textContent = option;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>button.className = 'option-btn';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>button.onclick = () =&gt; selectAnswer(index);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionsContainer.appendChild(button);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function selectAnswer(selectedIndex) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (selectedIndex === questionsData[currentQuestion].answer) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>score++;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('score-display').textContent = score;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentQuestion++;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>loadQuestion();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function startTimer() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>startTime = Date.now();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>timerInterval = setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('timer-display').textContent = Math.floor((Date.now() - startTime) / 1000);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 1000);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function endQuiz() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>clearInterval(timerInterval);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const finalElapsedTime = Math.floor((Date.now() - startTime) / 1000);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>quizScreen.classList.remove('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>resultsScreen.classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('final-score').textContent = score;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('final-time').textContent = finalElapsedTime;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>updateLeaderboard(playerName, score, finalElapsedTime);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function resetGame() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentQuestion = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>score = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('score-display').textContent = "0";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>resultsScreen.classList.remove('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>startScreen.classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('student-name-input').value = "";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">雲端排行榜連線功能</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function updateLeaderboard(name, finalScore, time) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>leaderboardBody.innerHTML = "&lt;tr&gt;&lt;td colspan='4'&gt;</span><span class="s2">正在努力將成績傳送到太空基地</span><span class="s1">... </span><span class="s3">🚀</span><span class="s1">&lt;br&gt;(</span><span class="s2">請稍候幾秒鐘</span><span class="s1">)&lt;/td&gt;&lt;/tr&gt;";</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// </span><span class="s2">檢查老師有冇忘記換</span><span class="s1"> URL</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbzI5jhgR8a_tVwr_Lf2AIveJ5cqKPRaobtbAGCJqQr4CsAWpdW775cdlnvgXmr9_XjVgg/exec") {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>leaderboardBody.innerHTML = "&lt;tr&gt;&lt;td colspan='4' style='color:red;'&gt;</span><span class="s3">⚠️</span><span class="s1"> </span><span class="s2">老師請注意：你尚未在程式碼中貼上</span><span class="s1"> Google Apps Script </span><span class="s2">的網址！</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// </span><span class="s2">組合要傳送的網址與資料</span><span class="s1"> (</span><span class="s2">使用</span><span class="s1"> GET </span><span class="s2">請求傳遞參數</span><span class="s1">)</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const urlWithData = `${GOOGLE_SCRIPT_URL}?action=save&amp;name=${encodeURIComponent(name)}&amp;score=${finalScore}&amp;time=${time}`;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// </span><span class="s2">發送請求到</span><span class="s1"> Google Sheets</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>fetch(urlWithData)</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>.then(response =&gt; response.json())</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>.then(data =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>leaderboardBody.innerHTML = "";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const medals = ["</span><span class="s3">🥇</span><span class="s1"> </span><span class="s2">冠軍</span><span class="s1">", "</span><span class="s3">🥈</span><span class="s1"> </span><span class="s2">亞軍</span><span class="s1">", "</span><span class="s3">🥉</span><span class="s1"> </span><span class="s2">季軍</span><span class="s1">"];</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (data.length === 0) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>leaderboardBody.innerHTML = "&lt;tr&gt;&lt;td colspan='4'&gt;</span><span class="s2">暫時未有探險家完成任務！</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>data.forEach((entry, index) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const row = `&lt;tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${medals[index] || (index + 1)}&lt;/td&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${entry.name}&lt;/td&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${entry.score}&lt;/td&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${entry.time}s&lt;/td&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>leaderboardBody.innerHTML += row;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>})</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>.catch(error =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>console.error('Error:', error);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>leaderboardBody.innerHTML = "&lt;tr&gt;&lt;td colspan='4'&gt;</span><span class="s2">哎呀！太空通訊中斷，無法載入排行榜。</span><span class="s3">📡</span><span class="s1">&lt;/td&gt;&lt;/tr&gt;";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+
+
+    <div id="game-container">
+
+        <div id="start-screen" class="screen active">
+
+            <h1>各位小小宇宙探險家<br>歡迎來到「地球奧秘大挑戰」！🚀</h1>
+
+            <p>喺出發去太空之前，請先登記你嘅探險家身分！</p>
+
+            <input type="text" id="student-name-input" placeholder="請輸入你的真實姓名..." maxlength="10">
+
+            <br>
+
+            <button onclick="startGame()">開始探險 🌍</button>
+
+        </div>
+
+
+
+        <div id="quiz-screen" class="screen">
+
+            <div id="hud">
+
+                <div>探險家：<span id="player-name-display"></span></div>
+
+                <div>時間：<span id="timer-display">0</span>s</div>
+
+                <div>分數：<span id="score-display">0</span> / 5</div>
+
+            </div>
+
+            <img id="quiz-image" src="" alt="地球卡通圖">
+
+            <p id="question-text"></p>
+
+            <div id="options-container"></div>
+
+        </div>
+
+
+
+        <div id="results-screen" class="screen">
+
+            <h1 id="final-status">探險完成！🏆</h1>
+
+            <p>你的最終分數是：<span id="final-score"></span> / 5</p>
+
+            <p>你用了 <span id="final-time"></span> 秒完成！</p>
+
+            
+
+            <hr>
+
+            <h3>🏆 全班榮譽排行榜 (Top 3) 🏆</h3>
+
+            <table id="leaderboard">
+
+                <thead>
+
+                    <tr>
+
+                        <th>排名</th>
+
+                        <th>探險家</th>
+
+                        <th>分數</th>
+
+                        <th>時間</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="leaderboard-body">
+
+                    </tbody>
+
+            </table>
+
+            <br>
+
+            <button onclick="resetGame()">再挑戰一次</button>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        // 🚨 超級重要：請將下面引號內嘅網址，替換成你嘅 Google Apps Script Web App URL！
+
+        const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE";
+
+
+
+        const questionsData = [
+
+            {
+
+                question: "1. 點解地球上會有白天同黑夜嘅交替呢？☀️🌙",
+
+                image: "https://i.ibb.co/3sXw6L8/earth-rotation.png",
+
+                options: ["因為地球圍繞太陽公轉", "因為地球每天繞着貫穿南北兩極嘅假想地軸自轉", "因為太陽每 24 小時會熄滅一次", "因為月亮擋住咗太陽光"],
+
+                answer: 1
+
+            },
+
+            {
+
+                question: "2. 為何地球上不同地區，白天和黑夜出現的時間並不相同？⏰",
+
+                image: "https://i.ibb.co/f49b16B/earth-timezones.png",
+
+                options: ["因為各國的時鐘設計不同", "因為不同地區的人喜歡不同的起床時間", "因為地球轉得太快，時鐘壞了", "因為不同地區在不同時間受到太陽光照射"],
+
+                answer: 3
+
+            },
+
+            {
+
+                question: "3. 地球圍繞太陽「公轉」一周，大約需要幾耐時間？🚀",
+
+                image: "https://i.ibb.co/fD27bM8/earth-orbit.png",
+
+                options: ["三百六十五日 (即是一年)", "二十四小時", "一個月", "一百年"],
+
+                answer: 0
+
+            },
+
+            {
+
+                question: "4. 地軸是傾斜的，當太陽光「直射」北半球時，光線集中，請問北半球係咩季節？🔥",
+
+                image: "https://i.ibb.co/7X7k908/north-summer.png",
+
+                options: ["冬季", "春季", "夏季", "秋季"],
+
+                answer: 2
+
+            },
+
+            {
+
+                question: "5. 當太陽光斜射北半球，並同時直射南半球時，南半球是什麼季節？⛄",
+
+                image: "https://i.ibb.co/TqqS6F8/south-summer.png",
+
+                options: ["春季", "夏季", "秋季", "冬季"],
+
+                answer: 1
+
+            }
+
+        ];
+
+
+
+        let currentQuestion = 0;
+
+        let score = 0;
+
+        let playerName = "";
+
+        let startTime, timerInterval;
+
+
+
+        const startScreen = document.getElementById('start-screen');
+
+        const quizScreen = document.getElementById('quiz-screen');
+
+        const resultsScreen = document.getElementById('results-screen');
+
+        const leaderboardBody = document.getElementById('leaderboard-body');
+
+
+
+        function startGame() {
+
+            playerName = document.getElementById('student-name-input').value.trim();
+
+            if (playerName === "") {
+
+                alert("探險家，請先輸入你嘅姓名啊！");
+
+                return;
+
+            }
+
+            document.getElementById('player-name-display').textContent = playerName;
+
+            startScreen.classList.remove('active');
+
+            quizScreen.classList.add('active');
+
+            startTimer();
+
+            loadQuestion();
+
+        }
+
+
+
+        function loadQuestion() {
+
+            if (currentQuestion >= questionsData.length) {
+
+                endQuiz();
+
+                return;
+
+            }
+
+            const data = questionsData[currentQuestion];
+
+            document.getElementById('quiz-image').src = data.image;
+
+            document.getElementById('question-text').textContent = data.question;
+
+            const optionsContainer = document.getElementById('options-container');
+
+            optionsContainer.innerHTML = "";
+
+            data.options.forEach((option, index) => {
+
+                const button = document.createElement('button');
+
+                button.textContent = option;
+
+                button.className = 'option-btn';
+
+                button.onclick = () => selectAnswer(index);
+
+                optionsContainer.appendChild(button);
+
+            });
+
+        }
+
+
+
+        function selectAnswer(selectedIndex) {
+
+            if (selectedIndex === questionsData[currentQuestion].answer) {
+
+                score++;
+
+                document.getElementById('score-display').textContent = score;
+
+            }
+
+            currentQuestion++;
+
+            loadQuestion();
+
+        }
+
+
+
+        function startTimer() {
+
+            startTime = Date.now();
+
+            timerInterval = setInterval(() => {
+
+                document.getElementById('timer-display').textContent = Math.floor((Date.now() - startTime) / 1000);
+
+            }, 1000);
+
+        }
+
+
+
+        function endQuiz() {
+
+            clearInterval(timerInterval);
+
+            const finalElapsedTime = Math.floor((Date.now() - startTime) / 1000);
+
+            quizScreen.classList.remove('active');
+
+            resultsScreen.classList.add('active');
+
+            document.getElementById('final-score').textContent = score;
+
+            document.getElementById('final-time').textContent = finalElapsedTime;
+
+            
+
+            updateLeaderboard(playerName, score, finalElapsedTime);
+
+        }
+
+
+
+        function resetGame() {
+
+            currentQuestion = 0;
+
+            score = 0;
+
+            document.getElementById('score-display').textContent = "0";
+
+            resultsScreen.classList.remove('active');
+
+            startScreen.classList.add('active');
+
+            document.getElementById('student-name-input').value = "";
+
+        }
+
+
+
+        // 雲端排行榜連線功能
+
+        function updateLeaderboard(name, finalScore, time) {
+
+            leaderboardBody.innerHTML = "<tr><td colspan='4'>正在努力將成績傳送到太空基地... 🚀<br>(請稍候幾秒鐘)</td></tr>";
+
+            
+
+            // 檢查老師有冇忘記換 URL
+
+            if (GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbzI5jhgR8a_tVwr_Lf2AIveJ5cqKPRaobtbAGCJqQr4CsAWpdW775cdlnvgXmr9_XjVgg/exec") {
+
+                leaderboardBody.innerHTML = "<tr><td colspan='4' style='color:red;'>⚠️ 老師請注意：你尚未在程式碼中貼上 Google Apps Script 的網址！</td></tr>";
+
+                return;
+
+            }
+
+
+
+            // 組合要傳送的網址與資料 (使用 GET 請求傳遞參數)
+
+            const urlWithData = `${GOOGLE_SCRIPT_URL}?action=save&name=${encodeURIComponent(name)}&score=${finalScore}&time=${time}`;
+
+
+
+            // 發送請求到 Google Sheets
+
+            fetch(urlWithData)
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    leaderboardBody.innerHTML = "";
+
+                    const medals = ["🥇 冠軍", "🥈 亞軍", "🥉 季軍"];
+
+                    
+
+                    if (data.length === 0) {
+
+                        leaderboardBody.innerHTML = "<tr><td colspan='4'>暫時未有探險家完成任務！</td></tr>";
+
+                        return;
+
+                    }
+
+
+
+                    data.forEach((entry, index) => {
+
+                        const row = `<tr>
+
+                            <td>${medals[index] || (index + 1)}</td>
+
+                            <td>${entry.name}</td>
+
+                            <td>${entry.score}</td>
+
+                            <td>${entry.time}s</td>
+
+                        </tr>`;
+
+                        leaderboardBody.innerHTML += row;
+
+                    });
+
+                })
+
+                .catch(error => {
+
+                    console.error('Error:', error);
+
+                    leaderboardBody.innerHTML = "<tr><td colspan='4'>哎呀！太空通訊中斷，無法載入排行榜。📡</td></tr>";
+
+                });
+
+        }
+
+    </script>
+
 </body>
+
 </html>
